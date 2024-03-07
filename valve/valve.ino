@@ -68,13 +68,7 @@ void loop() {
 
   // Check bypass
 
-  button_state = digitalRead(button_in);
-  if (button_state == LOW){
-    bypass = true;
-  }
-  else {
-    bypass = false;
-  }
+  bypass = digitalRead(button_in) ? false : true;
 
   // Check the water level
 
@@ -163,8 +157,8 @@ void do_blink_led(int n_times, int delays){
 }
 
 void set_valve(bool is_active){
-  digitalWrite(motor_pin_n, LOW);
   digitalWrite(motor_pin_p, is_active ? HIGH : LOW);
+  digitalWrite(motor_pin_n, LOW);
 }
 
 void set_led(bool is_active){
